@@ -36,7 +36,7 @@ type Bucket interface {
 	// ForEach executes a function for each key/value pair in a bucket. If the
 	// provided function returns an error then the iteration is stopped and the
 	// error is returned to the caller. The provided function must not modify
-	// the bucket.
+	// the bucket. If v is nil it is a sub-bucket.
 	ForEach(fn func(k, v []byte) error) error
 
 	// Get retrieves the value for a key in the bucket. Returns a nil value
