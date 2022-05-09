@@ -8,3 +8,10 @@ type Database struct {
 	Storage     `json:"-"`
 	Collections map[string]Collection `json:"collections"`
 }
+
+func Open(driver Driver, storageName string) (*Database, error) {
+	var err error
+	db := &Database{}
+	db.Storage, err = driver.Open(storageName)
+	return db, err
+}
